@@ -1,0 +1,101 @@
+[gd_scene load_steps=13 format=3 uid="uid://bugtjhxje7v1u"]
+
+[ext_resource type="Script" path="res://scripts/dev_level.gd" id="1_dat3k"]
+[ext_resource type="Texture2D" uid="uid://vulmpv1flql1" path="res://grid/PNG/Dark/texture_04.png" id="1_sehmp"]
+[ext_resource type="Material" uid="uid://ds7ho5joyp1mx" path="res://Mat/grid_text.tres" id="2_jtko6"]
+[ext_resource type="Environment" uid="uid://dgfw1oyp53v0y" path="res://ENV/fog_env.tres" id="3_tqoo6"]
+[ext_resource type="PackedScene" uid="uid://3elbjscpv7e0" path="res://scenes/player.tscn" id="4_ebai8"]
+[ext_resource type="PackedScene" uid="uid://efla8w587jbs" path="res://scenes/vending_machine.tscn" id="8_17hov"]
+[ext_resource type="PackedScene" uid="uid://cv2wm1pnm0ift" path="res://scenes/jukebox.tscn" id="9_70bpb"]
+[ext_resource type="PackedScene" uid="uid://bccaonbnt6csq" path="res://scenes/Throne.tscn" id="10_yuymf"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ncbrg"]
+dof_blur_near_distance = 0.4
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_wnkmr"]
+vertices = PackedVector3Array(-2.25, 0.5, -2.5, 0, 0.5, -2.5, 0, 0.5, -499.5, -499.5, 0.5, -2, -2.5, 0.5, -2, -2.25, 0.5, -2.5, 0, 0.5, -499.5, -499.5, 0.5, -499.5, 0, 0.5, -499.5, 0, 0.5, -2.5, 2.25, 0.5, -2.5, 499.5, 0.5, -2.75, 499.5, 0.5, -499.5, 2.25, 0.5, -0.25, 0.75, 0.5, -0.25, 0.75, 0.5, 0.5, 2.75, 0.5, 0.75, 2.75, 0.5, 0.75, 499.5, 0.5, 2.75, 499.5, 0.5, -2.75, 2.75, 0.5, -0.75, 2.25, 0.5, -0.25, 499.5, 0.5, -2.75, 2.75, 0.5, -2.25, 2.75, 0.5, -0.75, 2.75, 0.5, 2.25, 2.25, 0.5, 2.75, 499.5, 0.5, 2.75, 499.5, 0.5, -2.75, 2.25, 0.5, -2.5, 2.75, 0.5, -2.25, 2.75, 0.5, 0.75, 2.75, 0.5, 2.25, 499.5, 0.5, 2.75, -2.25, 0.5, 0.5, 0.75, 0.5, 0.5, 0.75, 0.5, -0.25, -2.25, 0.5, -0.25, -2.25, 0.5, -0.25, -2.5, 0.5, -2, -499.5, 0.5, -2, -499.5, 0.5, 2.25, -2.5, 0.5, 2.25, -2.25, 0.5, 0.5, -1.5, 4.5, -1.5, -1.5, 4.5, 1.5, 1.5, 4.5, 1.5, 1.5, 4.5, -1.5, -1, 0.5, 499.5, -0.75, 0.5, 2.75, -2.25, 0.5, 2.75, -2.25, 0.5, 2.75, -2.5, 0.5, 2.25, -499.5, 0.5, 2.25, -499.5, 0.5, 499.5, -1, 0.5, 499.5, -1, 0.5, 499.5, 1, 0.5, 499.5, 0.75, 0.5, 2.75, -0.75, 0.5, 2.75, 2.25, 0.5, 2.75, 0.75, 0.5, 2.75, 1, 0.5, 499.5, 499.5, 0.5, 499.5, 499.5, 0.5, 2.75, 2.25, 0.5, 2.75, 1, 0.5, 499.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 7), PackedInt32Array(5, 7, 6), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 16), PackedInt32Array(21, 20, 17), PackedInt32Array(17, 20, 19), PackedInt32Array(17, 19, 18), PackedInt32Array(24, 23, 22), PackedInt32Array(27, 26, 25), PackedInt32Array(30, 29, 28), PackedInt32Array(33, 32, 31), PackedInt32Array(37, 36, 34), PackedInt32Array(34, 36, 35), PackedInt32Array(43, 42, 38), PackedInt32Array(38, 42, 39), PackedInt32Array(39, 42, 41), PackedInt32Array(39, 41, 40), PackedInt32Array(47, 46, 44), PackedInt32Array(44, 46, 45), PackedInt32Array(50, 49, 48), PackedInt32Array(51, 55, 52), PackedInt32Array(52, 55, 53), PackedInt32Array(53, 55, 54), PackedInt32Array(59, 58, 56), PackedInt32Array(56, 58, 57), PackedInt32Array(62, 61, 60), PackedInt32Array(64, 63, 65), PackedInt32Array(65, 63, 66)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pb08"]
+albedo_texture = ExtResource("1_sehmp")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c6b8r"]
+size = Vector3(1000, 1, 1000)
+
+[node name="world" type="Node3D"]
+script = ExtResource("1_dat3k")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="damageOverlay" type="ColorRect" parent="CanvasLayer/HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(1, 0, 0.160784, 0.431373)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_tqoo6")
+camera_attributes = SubResource("CameraAttributesPractical_ncbrg")
+
+[node name="Player" parent="." instance=ExtResource("4_ebai8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.183, 0, -1.081)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.553043, -0.678764, 0.483139, 0, 0.579893, 0.814693, -0.833153, -0.45056, 0.320705, 3.35815, 7.16901, 5)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_wnkmr")
+
+[node name="floor" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_2pb08")
+size = Vector3(1000, 1, 1000)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/floor"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_c6b8r")
+
+[node name="arch" type="CSGCombiner3D" parent="NavigationRegion3D"]
+material_override = ExtResource("2_jtko6")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/arch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+size = Vector3(4, 4, 4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/arch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+size = Vector3(4, 2, 2)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/arch"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 2, 0)
+operation = 2
+radius = 1.0
+height = 6.0
+sides = 32
+
+[node name="Vending Machine" parent="." instance=ExtResource("8_17hov")]
+transform = Transform3D(1.26334, 0, 0, 0, 1.26334, 0, 0, 0, 1.26334, 5.03867, 0, -5.15396)
+
+[node name="Jukebox" parent="." instance=ExtResource("9_70bpb")]
+transform = Transform3D(1.35702, 0, 0, 0, 1.35702, 0, 0, 0, 1.35702, 7.19783, 0, -5.00207)
+
+[node name="Throne" parent="." instance=ExtResource("10_yuymf")]
+transform = Transform3D(1.25107, 0, 0, 0, 1.25107, 0, 0, 0, 1.25107, 9.04128, 0, -5.04281)
+
+[connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]

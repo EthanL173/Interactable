@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://3elbjscpv7e0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_uao81"]
+[ext_resource type="PackedScene" uid="uid://tw5tsdof1uka" path="res://scenes/view_model.tscn" id="2_acy8h"]
+[ext_resource type="Script" path="res://scripts/InteractPlayer.gd" id="3_psstp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s87dk"]
+radius = 0.35
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_uao81")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_s87dk")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+cull_mask = 1048573
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="head/Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="head/Camera3D/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="view_model_camera" parent="head/Camera3D/SubViewportContainer/SubViewport" instance=ExtResource("2_acy8h")]
+cull_mask = 1047554
+
+[node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.319289)
+target_position = Vector3(0, 0, -1)
+script = ExtResource("3_psstp")
+
+[node name="Interact" type="Label" parent="head/Camera3D/RayCast3D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.5
+offset_top = -11.5
+offset_right = 30.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.298039, 0.298039, 0.298039, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
