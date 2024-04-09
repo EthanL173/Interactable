@@ -76,7 +76,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_f2tl3")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_ltq6g")
-volume_db = 20.0
+volume_db = 25.0
 max_distance = 15.0
 
 [node name="light" type="SpotLight3D" parent="."]

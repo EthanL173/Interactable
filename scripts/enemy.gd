@@ -3,6 +3,8 @@ extends CharacterBody3D
 var player = null
 var state_machine
 
+var health = 3.0
+
 const SPEED = 4.0
 const ATACK_RANGE = 2.5
 
@@ -11,8 +13,6 @@ const ATACK_RANGE = 2.5
 @onready var nav_agent = $NavigationAgent3D
 
 @onready var anim_tree = $AnimationTree
-
-var bot_health = 20
 
 
 # Called when the node enters the scene tree for the first time.
@@ -55,8 +55,8 @@ func _hit_finished():
 	var damage = 20
 	player.hit(dir, damage)
 	
-func _is_hit(d):
-	bot_health =- d
-	if(bot_health <= 0):
+	
+func _on_area_3d_body_part_hit(dam):
+	health -= dam
+	if health <= 0:
 		queue_free()
-

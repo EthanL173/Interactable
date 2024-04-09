@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bugtjhxje7v1u"]
+[gd_scene load_steps=14 format=3 uid="uid://bugtjhxje7v1u"]
 
 [ext_resource type="Script" path="res://scripts/dev_level.gd" id="1_dat3k"]
 [ext_resource type="Texture2D" uid="uid://vulmpv1flql1" path="res://grid/PNG/Dark/texture_04.png" id="1_sehmp"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3elbjscpv7e0" path="res://scenes/player.tscn" id="4_ebai8"]
 [ext_resource type="PackedScene" uid="uid://efla8w587jbs" path="res://scenes/vending_machine.tscn" id="8_17hov"]
 [ext_resource type="PackedScene" uid="uid://cv2wm1pnm0ift" path="res://scenes/jukebox.tscn" id="9_70bpb"]
+[ext_resource type="PackedScene" uid="uid://4gctb4mt2o2n" path="res://scenes/war_robot_animated.tscn" id="9_nkv5m"]
 [ext_resource type="PackedScene" uid="uid://bccaonbnt6csq" path="res://scenes/Throne.tscn" id="10_yuymf"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ncbrg"]
@@ -97,5 +98,9 @@ transform = Transform3D(1.35702, 0, 0, 0, 1.35702, 0, 0, 0, 1.35702, 7.19783, 0,
 
 [node name="Throne" parent="." instance=ExtResource("10_yuymf")]
 transform = Transform3D(1.25107, 0, 0, 0, 1.25107, 0, 0, 0, 1.25107, 9.04128, 0, -5.04281)
+
+[node name="war_robot_animated" parent="." instance=ExtResource("9_nkv5m")]
+transform = Transform3D(0.72719, 0, 0, 0, 0.72719, 0, 0, 0, 0.72719, 18.3358, 0, 8.12982)
+player_path = NodePath("../Player")
 
 [connection signal="player_hit" from="Player" to="." method="_on_player_player_hit"]
