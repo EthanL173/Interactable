@@ -22,11 +22,20 @@ var t_bob = 0.0
 #signals
 signal player_hit
 
+@onready var ray = $head/Camera3D/RayCast3D
+@export var can_interact = true
+
+
+
 #FOV change vars
 #const BASE_FOV = 75.0
 #const FOV_CHANGE = 1.5
 
 func _ready():
+	
+	if(!can_interact):
+		ray.enabled = false
+	
 	#hides the cursor
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$head/Camera3D/SubViewportContainer/SubViewport.size = DisplayServer.window_get_size()

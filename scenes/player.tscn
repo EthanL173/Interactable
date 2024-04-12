@@ -38,6 +38,7 @@ cull_mask = 1047554
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.319289)
 target_position = Vector3(0, 0, -1)
+collide_with_areas = true
 script = ExtResource("3_psstp")
 
 [node name="Interact" type="Label" parent="head/Camera3D/RayCast3D"]

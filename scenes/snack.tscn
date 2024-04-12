@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://chvpwrp5cpuk7"]
+[gd_scene load_steps=11 format=3 uid="uid://chvpwrp5cpuk7"]
 
 [ext_resource type="Script" path="res://scripts/snack.gd" id="1_8rq0e"]
 [ext_resource type="Texture2D" uid="uid://dojiqhy7scdu0" path="res://Assets/PolygonOffice_Texture_04_B.png" id="1_ewk0a"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_be67a"]
+[ext_resource type="AudioStream" uid="uid://cc3dv0vw2dosr" path="res://Assets/crunch.wav" id="4_k62tg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xkiy6"]
 size = Vector3(1, 0.401489, 1)
@@ -58,27 +59,30 @@ diffuse_mode = 3
 specular_mode = 1
 albedo_texture = ExtResource("1_ewk0a")
 
-[node name="Snack" type="RigidBody3D"]
-collision_layer = 2
-collision_mask = 2
+[node name="Snack" type="RigidBody3D" groups=["Interactable"]]
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("1_8rq0e")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["Interactable"]]
 wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." groups=["Interactable"]]
 transform = Transform3D(0.319194, 0, 0, 0, 0.319194, 0, 0, 0, 0.319194, 0, 0.0587774, 0)
 shape = SubResource("BoxShape3D_xkiy6")
 
-[node name="Snack" type="Node3D" parent="CollisionShape3D"]
+[node name="Snack" type="Node3D" parent="CollisionShape3D" groups=["Interactable"]]
 transform = Transform3D(3.13289, 0, 0, 0, 3.13289, 0, 0, 0, 3.13289, 0, -0.184143, 0)
 
-[node name="SM_Prop_Snack_01" type="MeshInstance3D" parent="CollisionShape3D/Snack"]
+[node name="SM_Prop_Snack_01" type="MeshInstance3D" parent="CollisionShape3D/Snack" groups=["Interactable"]]
 transform = Transform3D(0.01, 0, 0, 0, 0, -0.01, 0, 0.01, 0, 0, 0, 0)
 mesh = SubResource("ArrayMesh_i1jb3")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_swvra")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_k62tg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
