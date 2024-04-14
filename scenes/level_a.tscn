@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2prxqn0haqb2"]
+
+[ext_resource type="Texture2D" uid="uid://vulmpv1flql1" path="res://grid/PNG/Dark/texture_04.png" id="1_caa1o"]
+[ext_resource type="Environment" uid="uid://dgfw1oyp53v0y" path="res://ENV/fog_env.tres" id="1_vn4f5"]
+[ext_resource type="PackedScene" uid="uid://3elbjscpv7e0" path="res://scenes/player.tscn" id="2_oq4rr"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_17n8y"]
+dof_blur_near_distance = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aat36"]
+albedo_texture = ExtResource("1_caa1o")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eet6t"]
+size = Vector3(1000, 1, 1000)
+
+[node name="Level_A" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_vn4f5")
+camera_attributes = SubResource("CameraAttributesPractical_17n8y")
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_aat36")
+size = Vector3(1000, 1, 1000)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+shape = SubResource("BoxShape3D_eet6t")
+
+[node name="Player" parent="." instance=ExtResource("2_oq4rr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3019, 0, -13.97)
+
+[node name="Building" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Building"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Building/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3897, 0.493656, 7.4437)
+size = Vector3(33.2471, 1, 1)
