@@ -1,0 +1,93 @@
+[gd_scene load_steps=14 format=3 uid="uid://doailmi0y5j1m"]
+
+[ext_resource type="PackedScene" uid="uid://c0gpuhepwxvfu" path="res://Assets/tileset.glb" id="1_p821n"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_grgw8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2f0e"]
+render_priority = 0
+shader = ExtResource("2_grgw8")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67rhg"]
+next_pass = SubResource("ShaderMaterial_w2f0e")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.52549, 0.235294, 0.0980392, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pae4g"]
+render_priority = 0
+shader = ExtResource("2_grgw8")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h2kn"]
+next_pass = SubResource("ShaderMaterial_pae4g")
+diffuse_mode = 3
+specular_mode = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4csr"]
+render_priority = 0
+shader = ExtResource("2_grgw8")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jdgfc"]
+next_pass = SubResource("ShaderMaterial_m4csr")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_143bp"]
+render_priority = 0
+shader = ExtResource("2_grgw8")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33k0w"]
+next_pass = SubResource("ShaderMaterial_143bp")
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.552941, 0.552941, 0, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d880s"]
+data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0.6946, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 2.5, -0.5, 0.5, 0.9789, -0.5, -0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, -0.5, 0.5, 0, -0.5, 0.5, 0.6946, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0.6946, -0.5, 0.5, 0.6946, 0.5, 0.5, 0.9789, -0.5, 0.5, 2.5, 0.5, 0.5, 0.9789, 0.5, 0.5, 0.9789, -0.5, 0.5, 2.5, -0.5, 0.5, 2.5, 0.5, -0.5, 0.6946, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.6946, -0.5, 0.5, 0.9789, 0.5, 0.5, 0.6946, 0.5, 0.5, 0.6946, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.9789, 0.5, -0.5, 2.5, -0.5, 0.5, 2.5, 0.5, 0.5, 2.5, -0.5, -0.5, 2.5, -0.5, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mnr5v"]
+data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, 0.5, 0.5, 2.5, -0.5, -0.5, 2.5, -0.5, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tqvp0"]
+data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0.6946, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 2.5, -0.5, 0.5, 0.9789, -0.5, -0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, 0.5, 0.5, 2.5, -0.5, -0.5, 2.5, -0.5, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
+
+[node name="tileset" instance=ExtResource("1_p821n")]
+
+[node name="Corner" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_67rhg")
+surface_material_override/1 = SubResource("StandardMaterial3D_5h2kn")
+surface_material_override/2 = SubResource("StandardMaterial3D_jdgfc")
+surface_material_override/3 = SubResource("StandardMaterial3D_33k0w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Corner" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Corner/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_d880s")
+
+[node name="Middle" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_67rhg")
+surface_material_override/1 = SubResource("StandardMaterial3D_33k0w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Middle" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Middle/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_mnr5v")
+
+[node name="Wall" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_67rhg")
+surface_material_override/1 = SubResource("StandardMaterial3D_5h2kn")
+surface_material_override/2 = SubResource("StandardMaterial3D_jdgfc")
+surface_material_override/3 = SubResource("StandardMaterial3D_33k0w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_tqvp0")

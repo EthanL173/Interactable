@@ -1,11 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2prxqn0haqb2"]
+[gd_scene load_steps=6 format=3 uid="uid://b2prxqn0haqb2"]
 
 [ext_resource type="Texture2D" uid="uid://vulmpv1flql1" path="res://grid/PNG/Dark/texture_04.png" id="1_caa1o"]
-[ext_resource type="Environment" uid="uid://dgfw1oyp53v0y" path="res://ENV/fog_env.tres" id="1_vn4f5"]
 [ext_resource type="PackedScene" uid="uid://3elbjscpv7e0" path="res://scenes/player.tscn" id="2_oq4rr"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_17n8y"]
-dof_blur_near_distance = 0.4
+[ext_resource type="MeshLibrary" uid="uid://civl0qhi6nrkm" path="res://Assets/Tileset.tres" id="3_tdsil"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aat36"]
 albedo_texture = ExtResource("1_caa1o")
@@ -16,12 +13,9 @@ size = Vector3(1000, 1, 1000)
 
 [node name="Level_A" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("1_vn4f5")
-camera_attributes = SubResource("CameraAttributesPractical_17n8y")
-
 [node name="floor" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
 material_override = SubResource("StandardMaterial3D_aat36")
 size = Vector3(1000, 1, 1000)
 
@@ -31,12 +25,16 @@ size = Vector3(1000, 1, 1000)
 shape = SubResource("BoxShape3D_eet6t")
 
 [node name="Player" parent="." instance=ExtResource("2_oq4rr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3019, 0, -13.97)
 
-[node name="Building" type="Node3D" parent="."]
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+mesh_library = ExtResource("3_tdsil")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(1, 65534, 2, 0, 65534, 2, 65535, 65534, 2, 65534, 65534, 2, 65533, 65534, 2, 65532, 65535, 1048578, 65532, 0, 1048578, 65532, 1, 1048578, 65533, 2, 655362, 65534, 2, 655362, 65535, 2, 655362, 0, 2, 655362, 1, 2, 655362, 2, 1, 1441794, 2, 65535, 1441794, 2, 0, 1441794, 2, 65534, 0, 2, 2, 1441792, 65532, 2, 655360, 65532, 65534, 1048576, 65533, 1, 1048577, 65533, 0, 1048577, 65533, 65535, 1048577, 1, 65535, 1048577, 1, 0, 1048577, 1, 1, 1048577, 65535, 0, 1048577, 65535, 65535, 1048577, 65534, 65535, 1048577, 65534, 0, 1048577, 65534, 1, 1048577, 65535, 1, 1048577, 0, 1, 1048577, 0, 0, 1048577, 0, 65535, 1048577)
+}
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Building"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Building/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3897, 0.493656, 7.4437)
-size = Vector3(33.2471, 1, 1)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.07008, 1.76728, 1.24215)
+layers = 7
