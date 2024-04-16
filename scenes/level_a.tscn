@@ -1,10 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2prxqn0haqb2"]
+[gd_scene load_steps=7 format=3 uid="uid://b2prxqn0haqb2"]
 
 [ext_resource type="PackedScene" uid="uid://3elbjscpv7e0" path="res://scenes/player.tscn" id="2_oq4rr"]
 [ext_resource type="MeshLibrary" uid="uid://dbaduse0pk4j0" path="res://Assets/outWAll.tres" id="3_ri41f"]
 [ext_resource type="MeshLibrary" uid="uid://civl0qhi6nrkm" path="res://Assets/Tileset.tres" id="3_tdsil"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="4_7wu63"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4h48p"]
+render_priority = 0
+shader = ExtResource("4_7wu63")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fo16e"]
+next_pass = SubResource("ShaderMaterial_4h48p")
 albedo_color = Color(0, 0.411765, 0, 1)
 
 [node name="Level_A" type="Node3D"]
@@ -43,3 +51,10 @@ transform = Transform3D(548.268, 0, 0, 0, 1, 0, 0, 0, 1, 1.505, -0.5, -241.481)
 use_collision = true
 size = Vector3(1, 1, 215.985)
 material = SubResource("StandardMaterial3D_fo16e")
+
+[node name="GridMap2" type="GridMap" parent="."]
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65482, 65176, 1507328, 49, 65171, 1507328)
+}
