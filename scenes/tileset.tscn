@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://doailmi0y5j1m"]
+[gd_scene load_steps=17 format=3 uid="uid://doailmi0y5j1m"]
 
 [ext_resource type="PackedScene" uid="uid://c0gpuhepwxvfu" path="res://Assets/tileset.glb" id="1_p821n"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_grgw8"]
@@ -59,6 +59,20 @@ data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tqvp0"]
 data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0.6946, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 2.5, -0.5, 0.5, 0.9789, -0.5, -0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, 0.5, 0.5, 2.5, -0.5, -0.5, 2.5, -0.5, -0.5, 2.5, 0.5, 0.5, 2.5, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yawno"]
+render_priority = 0
+shader = ExtResource("2_grgw8")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e2r3"]
+next_pass = SubResource("ShaderMaterial_yawno")
+diffuse_mode = 3
+specular_mode = 1
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_byleg"]
+data = PackedVector3Array(-0.5, 0, -0.5, 0.5, 0.6946, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 2.5, -0.5, 0.5, 0.9789, -0.5, -0.5, 0.9789, -0.5, -0.5, 2.5, -0.5, 0.5, 2.5, -0.5, -0.5, 0.6946, -0.5, 0.5, 0.9789, -0.5, 0.5, 0.6946, -0.5, -0.5, 0.6946, -0.5, -0.5, 0.9789, -0.5, 0.5, 0.9789, -0.5)
+
 [node name="tileset" instance=ExtResource("1_p821n")]
 
 [node name="Corner" parent="." index="0"]
@@ -91,3 +105,12 @@ surface_material_override/3 = SubResource("StandardMaterial3D_33k0w")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_tqvp0")
+
+[node name="Wall_001" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_5e2r3")
+surface_material_override/1 = SubResource("StandardMaterial3D_jdgfc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall_001/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_byleg")
