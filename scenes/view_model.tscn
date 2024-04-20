@@ -1344,9 +1344,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="fps_rig/rifle"]
-libraries = {
-"": SubResource("AnimationLibrary_pln65")
-}
 tree_root = SubResource("AnimationNodeStateMachine_6u6x6")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_firing = false
@@ -1357,3 +1354,7 @@ parameters/conditions/is_racking = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099448, -0.0653063, -1.03054)
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
+
+[node name="rack" type="AudioStreamPlayer3D" parent="."]
+
+[node name="lazer" type="AudioStreamPlayer3D" parent="."]

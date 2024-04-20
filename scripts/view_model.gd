@@ -6,6 +6,8 @@ extends Camera3D
 var is_firing = false
 var is_racking = false
 var is_idle = true
+@onready var lazer = $lazer
+@onready var rack = $rack
 
 #Bullet stuff
 var bullet = load("res://scenes/bullet.tscn")
@@ -16,6 +18,7 @@ var instance
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
 
 
 
@@ -37,6 +40,7 @@ func _input(event):
 			is_idle = false
 			is_firing = true
 			anim_tree.set("parameters/conditions/is_firing", is_firing)
+			lazer.play()
 			instance = bullet.instantiate()
 			instance.position = barrel.global_position
 			instance.transform.basis = barrel.global_transform.basis
@@ -47,6 +51,7 @@ func _input(event):
 			is_racking = true
 			if(is_racking && !is_idle && !is_firing):
 				anim_tree.set("parameters/conditions/is_racking", is_racking)
+				rack.play()
 				await get_tree().create_timer(0.8).timeout
 				is_racking = false
 				anim_tree.set("parameters/conditions/is_racking", is_racking)

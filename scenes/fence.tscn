@@ -22,7 +22,7 @@ data = PackedVector3Array(56.2995, -6.9847, -20.1165, 77.3381, -5.7007, -20.9765
 [node name="fence" instance=ExtResource("1_cx327")]
 
 [node name="SM_Env_Fence_Wood_Straight_01" parent="." index="0"]
-transform = Transform3D(0.001, 0, 0, 0, -4.37114e-11, -0.001, 0, 0.001, -4.37114e-11, 0, 0, 0)
+transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, -0.01, 0, 0.01, -4.37114e-10, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_27a8f")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SM_Env_Fence_Wood_Straight_01" index="0"]
