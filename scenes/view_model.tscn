@@ -1,8 +1,10 @@
-[gd_scene load_steps=79 format=3 uid="uid://tw5tsdof1uka"]
+[gd_scene load_steps=81 format=3 uid="uid://tw5tsdof1uka"]
 
 [ext_resource type="Script" path="res://scripts/view_model.gd" id="1_memyd"]
 [ext_resource type="Material" uid="uid://dbmdid1jjhed8" path="res://Mat/hands_material.tres" id="2_l01kb"]
 [ext_resource type="Material" uid="uid://b67mfh72cvpem" path="res://Mat/yyStickMat.tres" id="2_ssqbf"]
+[ext_resource type="AudioStream" uid="uid://bhljsximanbbo" path="res://Assets/rack.wav" id="4_ayt7y"]
+[ext_resource type="AudioStream" uid="uid://cwwh4tv6t7chp" path="res://Assets/laser.wav" id="4_qpal7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luidd"]
 resource_name = "lambert2"
@@ -1355,6 +1357,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.099448, -0.0653063, -1.0305
 target_position = Vector3(0, 0, -1)
 collision_mask = 2
 
-[node name="rack" type="AudioStreamPlayer3D" parent="."]
+[node name="rack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ayt7y")
 
-[node name="lazer" type="AudioStreamPlayer3D" parent="."]
+[node name="lazer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_qpal7")

@@ -13,6 +13,7 @@ const ATACK_RANGE = 2.5
 @onready var nav_agent = $NavigationAgent3D
 
 @onready var anim_tree = $AnimationTree
+@onready var punch = $punch
 
 
 # Called when the node enters the scene tree for the first time.
@@ -53,6 +54,7 @@ func _target_in_range():
 func _hit_finished():
 	var dir = global_position.direction_to(player.global_position)
 	var damage = 20
+	punch.play()
 	player.hit(dir, damage)
 	
 	
