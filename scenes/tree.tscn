@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://3bbtu6axlj0d"]
+
+[ext_resource type="PackedScene" uid="uid://bux8alvqk43bf" path="res://Assets/tree.glb" id="1_ym7k7"]
+[ext_resource type="Texture2D" uid="uid://cypa6scyl46ht" path="res://Assets/PolygonTown_Texture_01_A.png" id="2_omg2u"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_nbae6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13tpv"]
+render_priority = 0
+shader = ExtResource("3_nbae6")
+shader_parameter/outline_color = null
+shader_parameter/outline_width = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1vxc"]
+next_pass = SubResource("ShaderMaterial_13tpv")
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("2_omg2u")
+
+[node name="tree" instance=ExtResource("1_ym7k7")]
+
+[node name="SM_Env_Tree_01" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h1vxc")
