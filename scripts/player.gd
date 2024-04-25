@@ -96,7 +96,7 @@ func _physics_process(delta):
 	move_and_slide()
 func _process(delta):
 	if health <= 0:
-		get_tree().quit()
+		get_tree().reload_current_scene()
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
